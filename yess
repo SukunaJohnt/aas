@@ -1,5 +1,5 @@
---b
-   game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Ready"):FireServer()
+--c
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Ready"):FireServer()
         local replayName =  "t.txt"
         local startTime = tick()
      local macro = readfile(replayName)
@@ -10,6 +10,7 @@
      end
      
         local function place(info)
+            repeat wait(.1) until tonumber(info.moneyreq) <= game.Players.LocalPlayer.Money.Value
             local args = {
                 [1] = info.character,
                 [2] = stcf(info.position),
@@ -39,13 +40,10 @@
             end
     
             local currentTask = recordTowers[tower]         
-            if (currentTask.time <= tick() - startTime) and (tonumber(currentTask.moneyreq) <= game.Players.LocalPlayer.Money.Value) then
+        if (currentTask.time <= tick() - startTime) then 
                  if currentTask.type == "CreateUnit" then 
                 place(currentTask)
-                 end 
-                end
-                if (currentTask.time <= tick() - startTime) then 
-                if currentTask.type == "UpgradeUnit" then 
+                 elseif currentTask.type == "UpgradeUnit" then 
                     upgrade(currentTask)
                  elseif currentTask.type == "SellUnit" then 
                     sell(currentTask)
