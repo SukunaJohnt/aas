@@ -1,3 +1,4 @@
+--b
    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Ready"):FireServer()
         local replayName =  "t.txt"
         local startTime = tick()
@@ -38,7 +39,7 @@
             end
     
             local currentTask = recordTowers[tower]         
-            if (tostring(currentTask.moneyreq) <= game.Players.LocalPlayer.Money.Value) then
+            if (tonumber(currentTask.moneyreq) <= game.Players.LocalPlayer.Money.Value) then
                  if currentTask.type == "CreateUnit" then 
                 place(currentTask)
                  end 
