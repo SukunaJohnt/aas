@@ -39,7 +39,7 @@
             end
     
             local currentTask = recordTowers[tower]         
-            if (tonumber(currentTask.moneyreq) <= game.Players.LocalPlayer.Money.Value) then
+            if (currentTask.time <= tick() - startTime) and (tonumber(currentTask.moneyreq) <= game.Players.LocalPlayer.Money.Value) then
                  if currentTask.type == "CreateUnit" then 
                 place(currentTask)
                  end 
