@@ -43,7 +43,7 @@
                  if currentTask.type == "CreateUnit" then 
                 place(currentTask)
                  end 
-                
+                end
                 if (currentTask.time <= tick() - startTime) then 
                 if currentTask.type == "UpgradeUnit" then 
                     upgrade(currentTask)
@@ -53,6 +53,5 @@
                 recordTowers[tower] = nil
                 tower = tower + 1 
                 end 
-            end
          end
     end)
